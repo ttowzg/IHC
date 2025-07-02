@@ -1,0 +1,36 @@
+// src/dilemas.js
+// Agora temos uma lista simples com 31 dilemas genéricos.
+
+export const dilemas = [
+    "Água mole em pedra dura, tanto bate até que fura.",
+    "Antes tarde do que nunca.",
+    "Casa de ferreiro, espeto de pau.",
+    "De grão em grão, a galinha enche o papo.",
+    "Deus ajuda quem cedo madruga.",
+    "Diz-me com quem andas e te direi quem és.",
+    "Em time que está ganhando não se mexe.",
+    "Errar é humano, persistir no erro é burrice.",
+    "Filho de peixe, peixinho é.",
+    "Gato escaldado tem medo de água fria.",
+    "Ladrão que rouba ladrão tem cem anos de perdão.",
+    "Mais vale um pássaro na mão do que dois voando.",
+    "Mente vazia, oficina do diabo.",
+    "Não adianta chorar sobre o leite derramado.",
+    "Não deixe para amanhã o que você pode fazer hoje.",
+    "O barato sai caro.",
+    "O combinado não sai caro.",
+    "O seguro morreu de velho.",
+    "Pau que nasce torto, nunca se endireita.",
+    "Para bom entendedor, meia palavra basta.",
+    "Quem ama o feio, bonito lhe parece.",
+    "Quem canta seus males espanta.",
+    "Quem com ferro fere, com ferro será ferido.",
+    "Quem não tem cão, caça com gato.",
+    "Quem ri por último, ri melhor.",
+    "Quem semeia vento, colhe tempestade.",
+    "Saco vazio não para em pé.",
+    "Segunda-feira, dia de preguiça.",
+    "Tempo é dinheiro.",
+    "Um dia é da caça, outro do caçador.",
+    "Quando um não quer, dois não brigam."
+];
