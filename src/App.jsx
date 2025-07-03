@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Entrada from "./Entrada/Entrada";
 import Sobre from "./Sobre/Sobre";
-import { adicionarMensagem } from "./insert";
+import { adicionarDilema } from "./insert";
 import Adm from "./Adm/Adm.jsx";
 
 function App() {
     useEffect(() => {
-adicionarMensagem("Mensagem de teste 1");
-adicionarMensagem("Mensagem de teste 2");
+adicionarDilema("Mensagem de teste 1", "teste 1");
+adicionarDilema("Mensagem de teste 2", "teste 2");
 }, []);
 return (
 <>

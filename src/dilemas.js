@@ -1,7 +1,7 @@
 // src/dilemas.js
 // Lista de dilemas iniciais, já formatada como um array de objetos.
 
-export const dilemasIniciais = [
+// export const dilemasIniciais = [
   { titulo: "Provérbio do Dia", mensagem: "Água mole em pedra dura, tanto bate até que fura." },
   { titulo: "Provérbio do Dia", mensagem: "Antes tarde do que nunca." },
   { titulo: "Provérbio do Dia", mensagem: "Casa de ferreiro, espeto de pau." },
