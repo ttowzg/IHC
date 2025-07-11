@@ -1,41 +1,35 @@
-// src/Entrada/Entrada.jsx
+// src/Entrada/Entrada.jsx - VERSÃO CORRIGIDA PARA A SUA ESTRUTURA
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+// Agora vamos usar 'getDoc' para buscar um documento específico.
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../db";
 
 function Entrada() {
-  // Estados para os inputs do utilizador
   const [dia, setDia] = useState('');
   const [mes, setMes] = useState('');
-
-  // Estados para controlar o resultado e a interface
-  const [dilemaEncontrado, setDilemaEncontrado] = useState(null);
+  const [dilemaEncontrado, setDilemaEncontrado] = useState(''); // Agora guarda apenas a frase (string)
   const [erro, setErro] = useState('');
   const [carregando, setCarregando] = useState(true);
-
-  // Estado para guardar a lista de TODOS os dilemas vindos do Firebase
   const [listaDeDilemas, setListaDeDilemas] = useState([]);
 
-  // useEffect para carregar os dilemas do Firebase APENAS UMA VEZ
+  // Este useEffect carrega o documento único com todas as frases.
   useEffect(() => {
     const carregarDilemas = async () => {
-      // ***** VALORES CORRIGIDOS DE ACORDO COM A SUA IMAGEM *****
-      const nomeDaColecao = 'dilemas_oraculo'; // Corrigido!
-      const idDoDocumento = 'dias';            // Corrigido!
-      // **********************************************************
-
       try {
-        const docRef = doc(db, nomeDaColecao, idDoDocumento);
+        // Aponta diretamente para o seu documento 'dias'
+        const docRef = doc(db, "dilemas_oraculo", "dias");
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
+          // Pega o objeto com todos os campos (dia1, dia10, etc.)
           const dados = docSnap.data();
-          const lista = Object.values(dados);
-          setListaDeDilemas(lista);
+          // Converte os valores desse objeto numa lista de frases
+          const listaDeFrases = Object.values(dados);
+          setListaDeDilemas(listaDeFrases);
         } else {
-          setErro("Documento de dilemas não encontrado no Firebase.");
+          setErro("Documento 'dias' não encontrado no Firebase.");
         }
       } catch (error) {
         console.error("Erro ao carregar dilemas:", error);
@@ -46,23 +40,23 @@ function Entrada() {
     };
 
     carregarDilemas();
-  }, []); // O array vazio [] faz com que isto execute apenas uma vez
+  }, []); // Executa apenas uma vez
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setErro('');
-    setDilemaEncontrado(null);
+    setDilemaEncontrado('');
 
     if (!dia || !mes) {
       setErro('Por favor, preencha o dia e o mês.');
       return;
     }
-    
     if (listaDeDilemas.length === 0) {
-      setErro("Ainda a carregar os dilemas ou não foi possível encontrá-los.");
+      setErro("Nenhum dilema disponível para sorteio.");
       return;
     }
 
+    // Sorteia uma frase aleatória da nossa lista de frases
     const indiceAleatorio = Math.floor(Math.random() * listaDeDilemas.length);
     const dilemaSorteado = listaDeDilemas[indiceAleatorio];
 
@@ -70,7 +64,7 @@ function Entrada() {
   };
 
   if (carregando) {
-    return <p>A aquecer os motores do Oráculo...</p>;
+    return <p className="text-white text-lg">A carregar a sabedoria do Oráculo...</p>;
   }
 
   return (
@@ -92,7 +86,9 @@ function Entrada() {
       </form>
 
       {erro && <div className="mt-4 p-4 text-center bg-red-100 rounded-lg"><p className="text-md font-medium text-red-700">{erro}</p></div>}
-
+      
+      {/* **** AJUSTE FINAL NA EXIBIÇÃO **** */}
+      {/* Agora exibimos diretamente a frase sorteada, sem .titulo ou .mensagem */}
       {dilemaEncontrado && (
         <div className="mt-4 p-4 text-center bg-indigo-50 rounded-lg">
           <p className="text-lg text-indigo-800 mt-2">"{dilemaEncontrado}"</p>
