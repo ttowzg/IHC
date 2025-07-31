@@ -88,7 +88,7 @@ function Entrada() {
       {erro && <div className="mt-4 p-4 text-center bg-red-100 rounded-lg"><p className="text-md font-medium text-red-700">{erro}</p></div>}
       
       {/* **** AJUSTE FINAL NA EXIBIÇÃO **** */}
-      {/* Agora exibimos diretamente a frase sorteada, sem .titulo ou .mensagem */}
+      {/* exibimos diretamente a frase sorteada, sem .titulo ou .mensagem */}
       {dilemaEncontrado && (
         <div className="mt-4 p-4 text-center bg-indigo-50 rounded-lg">
           <p className="text-lg text-indigo-800 mt-2">"{dilemaEncontrado}"</p>
